@@ -1,0 +1,19 @@
+namespace: cve
+helm:
+  chart: 028760646564.dkr.ecr.us-east-1.amazonaws.com/internal/cve/helm-rtsp:latest
+targetCustomizations:
+- name: dev
+  helm:
+    values:
+      replication: false
+      image:
+        mosquittocontainer: 028760646564.dkr.ecr.us-east-1.amazonaws.com/cv-mosquitto:stable
+        enginecontainer: 028760646564.dkr.ecr.us-east-1.amazonaws.com/chips-qc-engine:ee48bd0
+      env:
+        rtspvideourl: "rtsp://cv-rtsp-server-with-fileupload:30554/data/TC1_MasaLump_3.ts"
+        maxexectime: "-1"
+        mosquittoaddress: mqcluster1.tssdk-stateful.svc.cluster.local:1883
+        uniqueID: "2129"
+  clusterSelector:
+    matchLabels:
+      env: dev
