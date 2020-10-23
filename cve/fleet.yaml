@@ -1,6 +1,6 @@
 namespace: cve
 helm:
-  chart: 028760646564.dkr.ecr.us-east-1.amazonaws.com/internal/cve/helm-rtsp:latest
+  chart: https://028760646564.dkr.ecr.us-east-1.amazonaws.com/internal/cve/helm-rtsp:latest
 targetCustomizations:
 - name: dev
   helm:
